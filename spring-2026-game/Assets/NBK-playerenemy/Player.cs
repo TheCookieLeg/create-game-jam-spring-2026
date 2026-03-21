@@ -68,6 +68,16 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (debuff.type == 4)
+        {
+            GUIManager.instance.attackType(debuff);
+            heal(debuff.damage);
+            enemy.takeDamage(0, debuff);
+
+            endTurn();
+            return;
+        }
+
         if (debuff.damage != 0 && debuff.turns == 0)
         {
             GUIManager.instance.attackType(debuff);
@@ -82,6 +92,11 @@ public class Player : MonoBehaviour
         endTurn();
 
         
+    }
+
+    public void heal(int n)
+    {
+        hp += n;
     }
 
     public void takeDamage(int damage,  Debuff debuff = null) 

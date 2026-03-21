@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   hp: 10
   damage: 1
-  normalAttackDesc: 
+  normalAttackDesc: Ellepigen blows a sickening kiss
   specialAttackDesc: 
   debuffTurns: 0
   debuffDamage: 0

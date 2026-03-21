@@ -151,13 +151,13 @@ public class GUIManager : MonoBehaviour
                     attackDesc.text += $"dealt {debuff.damage} damage to the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Stun:
-                    attackDesc.text += "stunned the enemy";
+                    attackDesc.text += "stun the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Weaken:
-                    attackDesc.text += "weakened the enemy";
+                    attackDesc.text += "weaken the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Heal:
-                    attackDesc.text += "healed yourself";
+                    attackDesc.text += "heal yourself";
                     break;
                 default:
                 
@@ -180,6 +180,7 @@ public class GUIManager : MonoBehaviour
 
     public void UpdateEnemyReference()
     {
+        enemy = TurnManager.instance.GetEnemyInstance();
         if (enemy != null) {
             enemyScript = enemy.GetComponent<Enemy>();
         } else {

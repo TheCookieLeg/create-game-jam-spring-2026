@@ -60,7 +60,7 @@ public class ButtonScript : MonoBehaviour
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     button.interactable = false;
-                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,-4));
+                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,4));
                 });
                 //button.interactable = false;
                 break;

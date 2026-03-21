@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) {yield break;}
         yield return new WaitForSeconds(3);
-        GUIManager.instance.ChangeText($"{current.name} attacks you");
+        GUIManager.instance.ChangeText(this.normalAttackDesc);
         yield return new WaitForSeconds(3);
         attack();
     
