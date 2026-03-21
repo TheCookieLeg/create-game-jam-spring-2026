@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GUIManager : MonoBehaviour
@@ -7,6 +8,11 @@ public class GUIManager : MonoBehaviour
     private GameObject enemy;
     private Player playerScript;
     private Enemy enemyScript;
+
+    [SerializeField] private GameObject actionBar;
+    [SerializeField] private TextMeshPro attackDesc;
+    [SerializeField] private Transform[] runePositions;
+
 
     void Start() 
     {
@@ -57,21 +63,41 @@ public class GUIManager : MonoBehaviour
     private void playerEndTurn(GameObject player)
     {
         Debug.Log($"GUI: {player.name} ended their turn");
+        actionBar.SetActive(false);
+        attackDesc.gameObject.SetActive(true);
+        
+        //if statement, rune attack eller normal attack
+
+        //Enable Enemy action
     }
 
     private void playerDead(GameObject player)
     {
         Debug.Log($"GUI: {player.name} died");
+        actionBar.SetActive(false);
+        attackDesc.gameObject.SetActive(true);
+        attackDesc.text = "you dead";
     }
 
 
     private void enemyEndTurn(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} ended their turn");
+
+        attackDesc.gameObject.SetActive(false);
+        actionBar.SetActive(true);
+
+        //for(int i = 0; i <= playerScript.inventory.length(); i++)
+            //instantiate(playerScript.inventory.get(i), runePositions[i]);
     }
 
     private void enemyDead(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} died");
+
+        actionBar.SetActive(false);
+        attackDesc.gameObject.SetActive(true);
+
+        attackDesc.text = "enemy dead";
     }
 }
