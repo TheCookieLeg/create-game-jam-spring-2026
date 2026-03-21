@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     //private TurnHandler turnHandler;
     //private GUIManager GUImanager;
     private List<Debuff> debuffs = new List<Debuff>();
-    //private List<Rune> inventory = new List<Rune>();
+    public List<Rune> inventory = new List<Rune>();
 
     private void OnEnable()
     {
