@@ -106,3 +106,4 @@ MonoBehaviour:
   hp: 10
   damage: 5
   inventory: []
+  healthText: {fileID: 0}

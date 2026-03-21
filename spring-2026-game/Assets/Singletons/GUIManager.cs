@@ -89,10 +89,9 @@ public class GUIManager : MonoBehaviour
     }
 
 
-    private void enemyEndTurn(GameObject enemy)
+    public void enemyEndTurn(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} ended their turn");
-        Debug.Log("HELLO??");
         attackDesc.gameObject.SetActive(false);
         actionBar.SetActive(true);
         if (specialAtkDesc != null)
@@ -111,7 +110,7 @@ public class GUIManager : MonoBehaviour
         actionBar.SetActive(false);
         attackDesc.gameObject.SetActive(true);
 
-        attackDesc.text = "enemy dead";
+        attackDesc.text = "You have brutally slain the enemy";
     }
 
     public void attackType(Debuff debuff)
@@ -126,9 +125,9 @@ public class GUIManager : MonoBehaviour
         specialAtkDesc = Desc;
     }
 
-    public void ChangeText(GameObject current)
+    public void ChangeText(string str)
     {
-        attackDesc.text = $"{current.name} attacks you";
+        attackDesc.text = str;
     }
 
 
@@ -168,8 +167,27 @@ public class GUIManager : MonoBehaviour
         }
         else
         {
-            attackDesc.text = "you hit";
+            attackDesc.text = "You hit the enemy, dealing damage";
         }
         yield return new WaitForSeconds(2);
+    }
+
+    public void UnsubscribeFromEvents()
+    {
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
+    }
+
+    public void UpdateEnemyReference()
+    {
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
+        
     }
 }

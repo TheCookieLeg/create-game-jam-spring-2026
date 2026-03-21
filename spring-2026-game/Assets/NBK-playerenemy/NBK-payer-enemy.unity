@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 2067444219}
   m_Layer: 5
   m_Name: HealthText
-  m_TagString: Untagged
+  m_TagString: HealthText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1605,7 +1605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -219.83, y: -67.05}
+  m_AnchoredPosition: {x: -219.83002, y: -67.04999}
   m_SizeDelta: {x: 367.66, y: 88.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067444219

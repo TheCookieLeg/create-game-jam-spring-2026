@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class TurnManager : MonoBehaviour
     private GameObject currentTurn;
 
     public event Action<GameObject> switchTurn;
+
+    private int enemyIndex = 0;
 
     [System.Serializable]
     public enum Debuffs
@@ -42,7 +45,7 @@ public class TurnManager : MonoBehaviour
             Debug.LogWarning("Player was not found. Try instantiating a new player");
         }
 
-        enemy = Instantiate(enemyPrefab[3]);
+        enemy = Instantiate(enemyPrefab[enemyIndex]);
         if (enemy != null) {
             enemyScript = enemy.GetComponent<Enemy>();
         } else {
@@ -90,7 +93,39 @@ public class TurnManager : MonoBehaviour
 
     private void enemyDead(GameObject enemy)
     {
-        Debug.Log($"{enemy.name} has died, oh no!");
+        StartCoroutine(newEncounter());
+    }
+
+    IEnumerator newEncounter()
+    {
+        yield return new WaitForSeconds(2);
+        GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} has been brutally slain...");
+
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
+        GUIManager.instance.UnsubscribeFromEvents();
+
+        yield return new WaitForSeconds(2);
+        Destroy(enemy.gameObject);
+        enemyIndex++;
+        GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} approaches you...");
+        yield return new WaitForSeconds(3);
+        enemy = Instantiate(enemyPrefab[enemyIndex]);
+
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
+
+        GUIManager.instance.UpdateEnemyReference();
+
+        switchTurn?.Invoke(player);
+        yield return new WaitForSeconds(1.2f);
+        GUIManager.instance.enemyEndTurn(enemy);
     }
 
 

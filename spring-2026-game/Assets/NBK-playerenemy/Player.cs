@@ -30,6 +30,17 @@ public class Player : MonoBehaviour
         TurnManager.instance.switchTurn -= startTurn;
     }
 
+    private void Start()
+    {
+        Debug.Log("Finding health");
+        healthText = GameObject.FindWithTag("HealthText").GetComponent<TextMeshProUGUI>();
+        if (healthText == null)
+        {
+            Debug.LogWarning("Couldnt find health :(");
+        }
+        healthText.text = $"Health: {hp}";
+    }
+
     public void onEncounterStart()
     {
         //Enemy = Turnhandler.instance.getEnemy();
@@ -76,6 +87,7 @@ public class Player : MonoBehaviour
     public void takeDamage(int damage,  Debuff debuff = null) 
     {
         hp -= damage;
+        healthText.text = $"Health: {hp}";
         if (hp <= 0)
         {
             death();
