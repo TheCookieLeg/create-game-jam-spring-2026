@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
         }
 
         enemy.takeDamage(damage, debuff);
-        
+        GUIManager.instance.attackType(debuff);
+
         endTurn();
 
         
