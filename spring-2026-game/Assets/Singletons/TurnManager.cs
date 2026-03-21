@@ -30,7 +30,7 @@ public class TurnManager : MonoBehaviour
     void Awake() 
     {
         if (instance != null && instance != this) {
-            Destroy(this);
+            Destroy(this.gameObject);
         } else {
             instance = this;
         }
@@ -94,7 +94,7 @@ public class TurnManager : MonoBehaviour
     }
 
 
-    public GameObject GetPlayerInstance() { return player; }
+    public GameObject GetPlayerInstance() { Debug.Log("Returning player: " + player); return player; }
     public GameObject GetEnemyInstance() { return enemy; }
 
 }

@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class GUIManager : MonoBehaviour
 {
@@ -16,12 +18,17 @@ public class GUIManager : MonoBehaviour
     private string specialAtkDesc;
 
 
-    void Start() 
+    IEnumerator Start() 
     {
         if (instance != null && instance != this) {
             Destroy(this);
         } else {
             instance = this;
+        }
+
+        while (TurnManager.instance == null || TurnManager.instance.GetPlayerInstance() == null)
+        {
+            yield return null; // wait one frame
         }
 
         player = GameObject.FindWithTag("Player");
@@ -38,19 +45,18 @@ public class GUIManager : MonoBehaviour
             Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
         }
 
-        playerScript.onPlayerActionCompleted += playerEndTurn;
-        playerScript.onPlayerDeath += playerDead;
-
-        enemyScript.onEnemyActionCompleted += enemyEndTurn;
-        enemyScript.onEnemyDeath += enemyDead;
+        
     }
 
 
     private void OnEnable()
     {
+        if (player == null) {return;}
+        playerScript.onPlayerActionCompleted += playerEndTurn;
+        playerScript.onPlayerDeath += playerDead;
 
-
-        
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
     }
 
     private void OnDisable()
