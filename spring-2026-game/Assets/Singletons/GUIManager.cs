@@ -47,9 +47,13 @@ public class GUIManager : MonoBehaviour
 
         playerScript.onPlayerActionCompleted += playerEndTurn;
         playerScript.onPlayerDeath += playerDead;
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
         
     }
 
+    
 
     private void OnEnable()
     {
@@ -85,10 +89,9 @@ public class GUIManager : MonoBehaviour
     }
 
 
-    private void enemyEndTurn(GameObject enemy)
+    public void enemyEndTurn(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} ended their turn");
-
         attackDesc.gameObject.SetActive(false);
         actionBar.SetActive(true);
         if (specialAtkDesc != null)
@@ -96,8 +99,8 @@ public class GUIManager : MonoBehaviour
             attackDesc.text = specialAtkDesc;
         }
 
-        for(int i = 0; i <= playerScript.inventory.Count; i++)
-            Instantiate(playerScript.inventory[i], runePositions[i]);
+        //for(int i = 0; i <= playerScript.inventory.Count; i++)
+            //Instantiate(playerScript.inventory[i], runePositions[i]);
     }
 
     private void enemyDead(GameObject enemy)
@@ -107,7 +110,7 @@ public class GUIManager : MonoBehaviour
         actionBar.SetActive(false);
         attackDesc.gameObject.SetActive(true);
 
-        attackDesc.text = "enemy dead";
+        attackDesc.text = "You have brutally slain the enemy";
     }
 
     public void attackType(Debuff debuff)
@@ -120,6 +123,11 @@ public class GUIManager : MonoBehaviour
     public void specialAttack(string Desc)
     {
         specialAtkDesc = Desc;
+    }
+
+    public void ChangeText(string str)
+    {
+        attackDesc.text = str;
     }
 
 
@@ -140,16 +148,16 @@ public class GUIManager : MonoBehaviour
             switch (debuff.type)
             {
                 case (int)TurnManager.Debuffs.Poison:
-                    attackDesc.text += "dealt extra damage to the enemy";
+                    attackDesc.text += $"dealt {debuff.damage} damage to the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Stun:
-                    attackDesc.text += "stunned the enemy";
+                    attackDesc.text += "stun the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Weaken:
-                    attackDesc.text += "weakened the enemy";
+                    attackDesc.text += "weaken the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Heal:
-                    attackDesc.text += "healed yourself";
+                    attackDesc.text += "heal yourself";
                     break;
                 default:
                 
@@ -159,8 +167,28 @@ public class GUIManager : MonoBehaviour
         }
         else
         {
-            attackDesc.text = "you hit";
+            attackDesc.text = "You hit the enemy, dealing damage";
         }
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
+    }
+
+    public void UnsubscribeFromEvents()
+    {
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
+    }
+
+    public void UpdateEnemyReference()
+    {
+        enemy = TurnManager.instance.GetEnemyInstance();
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
+        
     }
 }

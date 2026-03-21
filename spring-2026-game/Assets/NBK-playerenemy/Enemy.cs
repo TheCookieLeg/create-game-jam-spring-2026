@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int debuffTurns;
     [SerializeField] private int debuffDamage;
     [SerializeField] private TurnManager.Debuffs debuff;
+    private bool isDead = false;
 
     //private TurnHandler turnHandler;
     //private GUIManager GUImanager;
@@ -22,7 +24,14 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        TurnManager.instance.switchTurn += startTurn;   
+        TurnManager.instance.switchTurn += startTurn;  
+         
+    }
+
+    private void Start()
+    {
+        transform.name = transform.name.Replace("(clone)", "").Trim();
+        isDead = false;
     }
 
     private void OnDisable()
@@ -37,7 +46,8 @@ public class Enemy : MonoBehaviour
         if (this.gameObject != current) {return;}
 
         Debug.Log($"{this.gameObject.name} has started their turn");
-        attack();
+        StartCoroutine(DelayedAttack(current));
+        //attack();
     }
 
     public void startTurn()
@@ -58,6 +68,7 @@ public class Enemy : MonoBehaviour
         //Debuffs.add(debuff)
         if (hp <= 0)
         {
+            isDead = true;
             death();
         }
     }
@@ -89,6 +100,17 @@ public class Enemy : MonoBehaviour
     private void death()
     {
         onEnemyDeath?.Invoke(this.gameObject);
+    }
+
+
+    IEnumerator DelayedAttack(GameObject current)
+    {
+        if (isDead) {yield break;}
+        yield return new WaitForSeconds(3);
+        GUIManager.instance.ChangeText(this.normalAttackDesc);
+        yield return new WaitForSeconds(3);
+        attack();
+    
     }
 
 }

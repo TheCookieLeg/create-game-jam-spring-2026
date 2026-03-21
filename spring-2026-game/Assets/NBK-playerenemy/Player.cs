@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     private List<Debuff> debuffs = new List<Debuff>();
     public List<Rune> inventory = new List<Rune>();
 
+    [SerializeField] private TextMeshProUGUI healthText; 
+
     private void OnEnable()
     {
         TurnManager.instance.switchTurn += startTurn;
@@ -25,6 +28,17 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         TurnManager.instance.switchTurn -= startTurn;
+    }
+
+    private void Start()
+    {
+        Debug.Log("Finding health");
+        healthText = GameObject.FindWithTag("HealthText").GetComponent<TextMeshProUGUI>();
+        if (healthText == null)
+        {
+            Debug.LogWarning("Couldnt find health :(");
+        }
+        healthText.text = $"Health: {hp}";
     }
 
     public void onEncounterStart()
@@ -54,6 +68,16 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (debuff.type == 4)
+        {
+            GUIManager.instance.attackType(debuff);
+            heal(debuff.damage);
+            enemy.takeDamage(0, debuff);
+
+            endTurn();
+            return;
+        }
+
         if (debuff.damage != 0 && debuff.turns == 0)
         {
             GUIManager.instance.attackType(debuff);
@@ -62,7 +86,7 @@ public class Player : MonoBehaviour
             endTurn();
             return;
         }
-        
+
         GUIManager.instance.attackType(debuff);
         enemy.takeDamage(damage, debuff);
         endTurn();
@@ -70,9 +94,15 @@ public class Player : MonoBehaviour
         
     }
 
+    public void heal(int n)
+    {
+        hp += n;
+    }
+
     public void takeDamage(int damage,  Debuff debuff = null) 
     {
         hp -= damage;
+        healthText.text = $"Health: {hp}";
         if (hp <= 0)
         {
             death();

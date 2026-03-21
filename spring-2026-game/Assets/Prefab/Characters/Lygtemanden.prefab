@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   hp: 10
-  damage: 5
-  normalAttackDesc: 
+  damage: 1
+  normalAttackDesc: Lygtemanden insults you
   specialAttackDesc: 
   debuffTurns: 0
   debuffDamage: 0

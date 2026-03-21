@@ -32,33 +32,37 @@ public class ButtonScript : MonoBehaviour
             case 1:
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
+                    button.interactable = false;
                     player.GetComponent<Player>().attack(new Debuff(1,0,10));
                 });
-                button.interactable = false;
+                //button.interactable = false;
                 break;
             
             case 2:
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
+                    button.interactable = false;
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Stun,2,1));
                 });
-                button.interactable = false;
+                //button.interactable = false;
                 break;
 
             case 3:
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
+                    button.interactable = false;
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Weaken,2,1));
                 });
-                button.interactable = false;
+                //button.interactable = false;
                 break;
 
             case 4:
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
-                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,-4));
+                    button.interactable = false;
+                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,4));
                 });
-                button.interactable = false;
+                //button.interactable = false;
                 break;
         }
     }
