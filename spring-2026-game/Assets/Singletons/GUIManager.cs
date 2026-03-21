@@ -12,6 +12,8 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private GameObject actionBar;
     [SerializeField] private TextMeshPro attackDesc;
     [SerializeField] private Transform[] runePositions;
+    private Debuff debuff;
+    private string specialAtkDesc;
 
 
     void Start() 
@@ -65,10 +67,37 @@ public class GUIManager : MonoBehaviour
         Debug.Log($"GUI: {player.name} ended their turn");
         actionBar.SetActive(false);
         attackDesc.gameObject.SetActive(true);
-        
-        //if statement, rune attack eller normal attack
 
-        //Enable Enemy action
+
+        if (debuff != null)
+        {
+            attackDesc.text = "you activate a rune and ";
+            switch (debuff.type)
+            {
+                case (int)TurnManager.Debuffs.Poison:
+                    attackDesc.text += "poisoned the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Stun:
+                    attackDesc.text += "stunned the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Weaken:
+                    attackDesc.text += "weakend the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Heal:
+                    attackDesc.text += "healed yourself";
+                    break;
+                default:
+                    break;
+            }
+            debuff = null;
+        }
+        else
+        {
+            attackDesc.text = "you hit";
+        }
+
+
+
     }
 
     private void playerDead(GameObject player)
@@ -86,9 +115,13 @@ public class GUIManager : MonoBehaviour
 
         attackDesc.gameObject.SetActive(false);
         actionBar.SetActive(true);
+        if (specialAtkDesc != null)
+        {
+            attackDesc.text = specialAtkDesc;
+        }
 
-        //for(int i = 0; i <= playerScript.inventory.length(); i++)
-            //instantiate(playerScript.inventory.get(i), runePositions[i]);
+        for(int i = 0; i <= playerScript.inventory.Count; i++)
+            Instantiate(playerScript.inventory[i], runePositions[i]);
     }
 
     private void enemyDead(GameObject enemy)
@@ -99,5 +132,15 @@ public class GUIManager : MonoBehaviour
         attackDesc.gameObject.SetActive(true);
 
         attackDesc.text = "enemy dead";
+    }
+
+    public void attackType(Debuff debuff)
+    {
+        debuff = this.debuff;
+    }
+
+    public void specialAttack(string Desc)
+    {
+        specialAtkDesc = Desc;
     }
 }

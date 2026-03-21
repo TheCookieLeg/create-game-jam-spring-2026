@@ -9,6 +9,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int hp = 10;
     [SerializeField] private int damage = 5;
+    [SerializeField] private string normalAttackDesc;
+    [SerializeField] private string specialAttackDesc;
+
+    [SerializeField] private int debuffTurns;
+    [SerializeField] private int debuffDamage;
+    [SerializeField] private TurnManager.Debuffs debuff;
+
     //private TurnHandler turnHandler;
     //private GUIManager GUImanager;
     //private Player player;
@@ -68,6 +75,14 @@ public class Enemy : MonoBehaviour
     {
         Debuff debuff = new Debuff((int)TurnManager.Debuffs.NoDebuff, 0);
         TurnManager.instance.GetPlayerInstance().GetComponent<Player>().takeDamage(damage, debuff);
+        endTurn();
+    }
+    
+    public void specialAttack()
+    {
+        Debuff debuff = new Debuff((int)this.debuff, debuffTurns, debuffDamage);
+        TurnManager.instance.GetPlayerInstance().GetComponent<Player>().takeDamage(damage, debuff);
+        //GUIManager.instance.specialAttack();
         endTurn();
     }
 
