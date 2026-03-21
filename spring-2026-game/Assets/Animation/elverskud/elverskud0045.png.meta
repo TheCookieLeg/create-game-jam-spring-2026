@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 329efd969fcdd1c41bbff79d6bcf1632
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2397468429282743447
+    second: elverskud0045_0
+  - first:
+      213: -2784215531154727437
+    second: elverskud0045_1
+  - first:
+      213: -9023301543090848965
+    second: elverskud0045_2
+  - first:
+      213: 8610007548842193917
+    second: elverskud0045_3
+  - first:
+      213: 2391753120292370238
+    second: elverskud0045_4
+  - first:
+      213: 2744046410657627836
+    second: elverskud0045_5
+  - first:
+      213: 6611913227225419361
+    second: elverskud0045_6
+  - first:
+      213: 6801241677835667922
+    second: elverskud0045_7
+  - first:
+      213: -3174723564719015823
+    second: elverskud0045_8
+  - first:
+      213: -7176438470005230461
+    second: elverskud0045_9
+  - first:
+      213: 4197361957298353107
+    second: elverskud0045_10
+  - first:
+      213: -6691784867404114744
+    second: elverskud0045_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: elverskud0045_0
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 350
+        width: 67
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b63687a2b7abed0800000000000000
+      internalID: -2397468429282743447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_1
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 521
+        width: 28
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd956fc9ba7c59d0800000000000000
+      internalID: -2784215531154727437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_2
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 417
+        width: 61
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3bf5d6dd0bc6c280800000000000000
+      internalID: -9023301543090848965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_3
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 488
+        width: 56
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3bb267f34ec7770800000000000000
+      internalID: 8610007548842193917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_4
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 392
+        width: 35
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3775757ac6313120800000000000000
+      internalID: 2391753120292370238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_5
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 487
+        width: 53
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbefe620cafc41620800000000000000
+      internalID: 2744046410657627836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_6
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 183
+        width: 142
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16e4a7a7c0c32cb50800000000000000
+      internalID: 6611913227225419361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_7
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 296
+        width: 109
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d90afe754dd26e50800000000000000
+      internalID: 6801241677835667922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_8
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 236
+        width: 106
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1787cd00dbd11f3d0800000000000000
+      internalID: -3174723564719015823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_9
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 397
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 384f3e2eb3b286c90800000000000000
+      internalID: -7176438470005230461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_10
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 343
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d3b18a2676004a30800000000000000
+      internalID: 4197361957298353107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elverskud0045_11
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 262
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c41b012e110223a0800000000000000
+      internalID: -6691784867404114744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      elverskud0045_0: -2397468429282743447
+      elverskud0045_1: -2784215531154727437
+      elverskud0045_10: 4197361957298353107
+      elverskud0045_11: -6691784867404114744
+      elverskud0045_2: -9023301543090848965
+      elverskud0045_3: 8610007548842193917
+      elverskud0045_4: 2391753120292370238
+      elverskud0045_5: 2744046410657627836
+      elverskud0045_6: 6611913227225419361
+      elverskud0045_7: 6801241677835667922
+      elverskud0045_8: -3174723564719015823
+      elverskud0045_9: -7176438470005230461
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
