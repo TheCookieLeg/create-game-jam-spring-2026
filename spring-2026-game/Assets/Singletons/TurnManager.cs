@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour
     private GameObject enemy;
     private Player playerScript;
     private Enemy enemyScript;
+    private GameObject currentTurn;
 
     public event Action<GameObject> switchTurn;
 

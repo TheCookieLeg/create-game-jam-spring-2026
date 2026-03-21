@@ -16,14 +16,30 @@ public class Player : MonoBehaviour
     private List<Debuff> debuffs = new List<Debuff>();
     //private List<Rune> inventory = new List<Rune>();
 
+    private void OnEnable()
+    {
+        TurnManager.instance.switchTurn += startTurn;
+        
+    }
+
+    private void OnDisable()
+    {
+        TurnManager.instance.switchTurn -= startTurn;
+    }
+
     public void onEncounterStart()
     {
         //Enemy = Turnhandler.instance.getEnemy();
     }
 
-    public void startTurn()
+    public void startTurn(GameObject current)
     {
         //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
+        if (this.gameObject != current) {return;}
+
+        Debug.Log($"{this.gameObject.name} has started their turn");
+
+        doDebuff();
     }
 
     public void attack()
@@ -52,7 +68,7 @@ public class Player : MonoBehaviour
             //debuff.doDebuff()
             //if (debuff.turns <=0)
                 //debuffs.remove(debuff)
-        onPlayerActionCompleted?.Invoke(this.gameObject);
+        
 
         Debuff debuff = new Debuff(1,1);
 
@@ -60,6 +76,9 @@ public class Player : MonoBehaviour
         {
             death();
         }
+
+        onPlayerActionCompleted?.Invoke(this.gameObject);
+
     }
 
     private void death()
