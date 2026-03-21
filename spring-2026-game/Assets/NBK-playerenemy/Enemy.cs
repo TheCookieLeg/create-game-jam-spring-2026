@@ -1,8 +1,12 @@
+using System;
 using Unity.Jobs;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public event Action<GameObject> onEnemyActionCompleted;
+    public event Action<GameObject> onEnemyDeath;
+
     [SerializeField] private int hp = 10;
     [SerializeField] private int damage = 5;
     //private TurnHandler turnHandler;
@@ -36,6 +40,8 @@ public class Enemy : MonoBehaviour
         //GUI
         //foreach(Debuff debuff in debuffs)
         //debuff.doDebuff()
+
+        onEnemyActionCompleted?.Invoke(this.gameObject);
     }
 
     public void attack()
@@ -45,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     private void death()
     {
-
+        onEnemyDeath?.Invoke(this.gameObject);
     }
 
 }

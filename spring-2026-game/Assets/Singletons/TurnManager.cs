@@ -36,12 +36,18 @@ public class TurnManager : MonoBehaviour
     {
         playerScript.onPlayerActionCompleted += PlayerEndTurn;
         playerScript.onPlayerDeath += playerDead;
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
     }
 
     private void OnDisable()
     {
         playerScript.onPlayerActionCompleted -= PlayerEndTurn;
         playerScript.onPlayerDeath -= playerDead;
+
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
     }
 
 
@@ -56,6 +62,16 @@ public class TurnManager : MonoBehaviour
         Debug.Log($"{player.name} has died");
     }
 
+
+    private void enemyEndTurn(GameObject enemy)
+    {
+        Debug.Log($"{enemy.name} has ended their turn");
+    }
+
+    private void enemyDead(GameObject enemy)
+    {
+        Debug.Log($"{enemy.name} has ended their turn");
+    }
 
 
     public GameObject GetPlayerInstance() { return player; }
