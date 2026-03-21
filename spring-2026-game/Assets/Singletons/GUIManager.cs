@@ -1,16 +1,12 @@
-using System;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour
+public class GUIManager : MonoBehaviour
 {
-    public static TurnManager instance {get; private set;}
+    public static GUIManager instance {get; private set;}
     private GameObject player;
     private GameObject enemy;
     private Player playerScript;
     private Enemy enemyScript;
-    private GameObject currentTurn;
-
-    public event Action<GameObject> switchTurn;
 
     void Awake() 
     {
@@ -35,9 +31,12 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+
     private void OnEnable()
     {
-        playerScript.onPlayerActionCompleted += PlayerEndTurn;
+
+
+        playerScript.onPlayerActionCompleted += playerEndTurn;
         playerScript.onPlayerDeath += playerDead;
 
         enemyScript.onEnemyActionCompleted += enemyEndTurn;
@@ -46,40 +45,31 @@ public class TurnManager : MonoBehaviour
 
     private void OnDisable()
     {
-        playerScript.onPlayerActionCompleted -= PlayerEndTurn;
+        playerScript.onPlayerActionCompleted -= playerEndTurn;
         playerScript.onPlayerDeath -= playerDead;
 
         enemyScript.onEnemyActionCompleted -= enemyEndTurn;
         enemyScript.onEnemyDeath -= enemyDead;
     }
 
-
-
-    private void PlayerEndTurn(GameObject player)
+    private void playerEndTurn(GameObject player)
     {
-        Debug.Log($"{player.name} has ended their turn");
-        switchTurn?.Invoke(enemy);
+        Debug.Log($"GUI: {player.name} ended their turn");
     }
 
     private void playerDead(GameObject player)
     {
-        Debug.Log($"{player.name} has died");
+        Debug.Log($"GUI: {player.name} died");
     }
 
 
     private void enemyEndTurn(GameObject enemy)
     {
-        Debug.Log($"{enemy.name} has ended their turn");
-        switchTurn?.Invoke(player);
+        Debug.Log($"GUI: {enemy.name} ended their turn");
     }
 
     private void enemyDead(GameObject enemy)
     {
-        Debug.Log($"{enemy.name} has ended their turn");
+        Debug.Log($"GUI: {enemy.name} died");
     }
-
-
-    public GameObject GetPlayerInstance() { return player; }
-    public GameObject GetEnemyInstance() { return enemy; }
-
 }

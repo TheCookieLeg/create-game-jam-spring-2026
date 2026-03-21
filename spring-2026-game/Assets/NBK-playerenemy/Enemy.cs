@@ -13,6 +13,28 @@ public class Enemy : MonoBehaviour
     //private GUIManager GUImanager;
     //private Player player;
 
+    private void OnEnable()
+    {
+        Debug.Log(TurnManager.instance == null);
+        TurnManager.instance.switchTurn += startTurn;
+        
+    }
+
+    private void OnDisable()
+    {
+        TurnManager.instance.switchTurn -= startTurn;
+    }
+
+
+    public void startTurn(GameObject current)
+    {
+        //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
+        if (this.gameObject != current) {return;}
+
+        Debug.Log($"{this.gameObject.name} has started their turn");
+        endTurn();
+    }
+
     public void startTurn()
     {
         //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
