@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public event Action<Player> onPlayerActionCompleted;
+    // Event for player death?
+
     [SerializeField] private int hp = 10;
     [SerializeField] private int damage = 5;
     //private Enemy enemy;
@@ -37,13 +41,15 @@ public class Player : MonoBehaviour
         //Debuffs.add(debuff)
     }
 
-    private void endTurn()
+    public void endTurn()
     {
         //GUI
         //foreach(Debuff debuff in debuffs)
             //debuff.doDebuff()
             //if (debuff.turns <=0)
                 //debuffs.remove(debuff)
+
+        onPlayerActionCompleted?.Invoke(this);
 
         Debuff debuff = new Debuff(1,1);
 
@@ -57,5 +63,7 @@ public class Player : MonoBehaviour
     {
 
     }
+
+    /* -= TEMPORARY BELOW =- */
 
 }
