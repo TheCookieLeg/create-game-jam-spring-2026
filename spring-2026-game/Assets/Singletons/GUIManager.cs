@@ -102,8 +102,6 @@ public class GUIManager : MonoBehaviour
             attackDesc.text = "you hit";
         }
 
-
-
     }
 
     private void playerDead(GameObject player)

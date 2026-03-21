@@ -14,59 +14,51 @@ public class ButtonScript : MonoBehaviour
     {
         while (TurnManager.instance == null || TurnManager.instance.GetPlayerInstance() == null)
         {
-            var tm = TurnManager.instance;
-
-            Debug.Log("Instance null? " + (tm == null));
-
-            if (tm != null)
-            {
-                var player = tm.GetPlayerInstance();
-                Debug.Log("Player null? " + (player == null));
-            }
             yield return null; // wait one frame
         }
 
         player = TurnManager.instance.GetPlayerInstance();
-        if (player == null) {Debug.LogWarning("KILL YOURSELF");}
         Button button = GetComponent<Button>();
-
-        Debug.Log("HELLO??");
 
         switch (type)
         {
             case 0:
-                Debug.Log($"Set {this.gameObject.name} to attack {type}");
+                //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
-                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.NoDebuff,0,0));
+                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.NoDebuff,0,2));
                 });
                 break;
 
             case 1:
-                Debug.Log($"Set {this.gameObject.name} to attack {type}");
+                //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff(1,0,10));
                 });
+                button.interactable = false;
                 break;
             
             case 2:
-                Debug.Log($"Set {this.gameObject.name} to attack {type}");
+                //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Stun,2,1));
                 });
+                button.interactable = false;
                 break;
 
             case 3:
-                Debug.Log($"Set {this.gameObject.name} to attack {type}");
+                //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Weaken,2,1));
                 });
+                button.interactable = false;
                 break;
 
             case 4:
-                Debug.Log($"Set {this.gameObject.name} to attack {type}");
+                //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,-4));
                 });
+                button.interactable = false;
                 break;
         }
     }

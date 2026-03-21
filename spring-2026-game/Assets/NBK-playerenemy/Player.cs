@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
     public void attack(Debuff debuff)
     {
+        Debug.Log("Attack with the debuff: " + debuff.type);
         Enemy enemy = TurnManager.instance.GetEnemyInstance().GetComponent<Enemy>();
 
         if (debuff.type == 0)
