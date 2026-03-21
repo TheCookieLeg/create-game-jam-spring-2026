@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GUIManager
   actionBar: {fileID: 1557977892}
-  attackDesc: {fileID: 0}
+  attackDesc: {fileID: 1944444689}
   runePositions:
   - {fileID: 553970271}
   - {fileID: 893102110}
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The enemy fucking killed you. So you're actually dead now. A bit awkward.
+  m_text: ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbdb39fa3c574680caaa4eea8c156de9, type: 2}
   m_sharedMaterial: {fileID: -6900954493875378970, guid: bbdb39fa3c574680caaa4eea8c156de9, type: 2}

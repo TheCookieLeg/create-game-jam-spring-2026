@@ -56,14 +56,15 @@ public class Player : MonoBehaviour
 
         if (debuff.damage != 0 && debuff.turns == 0)
         {
+            GUIManager.instance.attackType(debuff);
             enemy.takeDamage(damage + debuff.damage, debuff);
+            
             endTurn();
             return;
         }
-
-        enemy.takeDamage(damage, debuff);
+        
         GUIManager.instance.attackType(debuff);
-
+        enemy.takeDamage(damage, debuff);
         endTurn();
 
         
