@@ -42,7 +42,7 @@ public class TurnManager : MonoBehaviour
             Debug.LogWarning("Player was not found. Try instantiating a new player");
         }
 
-        enemy = Instantiate(enemyPrefab[0]);
+        enemy = Instantiate(enemyPrefab[3]);
         if (enemy != null) {
             enemyScript = enemy.GetComponent<Enemy>();
         } else {
@@ -94,7 +94,7 @@ public class TurnManager : MonoBehaviour
     }
 
 
-    public GameObject GetPlayerInstance() { Debug.Log("Returning player: " + player); return player; }
+    public GameObject GetPlayerInstance() { return player; }
     public GameObject GetEnemyInstance() { return enemy; }
 
 }
