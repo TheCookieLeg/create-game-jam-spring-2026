@@ -90,7 +90,7 @@ public class TurnManager : MonoBehaviour
 
     private void enemyDead(GameObject enemy)
     {
-        Debug.Log($"{enemy.name} has ended their turn");
+        Debug.Log($"{enemy.name} has died, oh no!");
     }
 
 

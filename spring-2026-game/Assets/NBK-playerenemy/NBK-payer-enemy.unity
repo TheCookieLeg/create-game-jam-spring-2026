@@ -1415,8 +1415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
   playerPrefab: {fileID: 2427550793882525312, guid: e10530aea5d12503e94a128f64394c94, type: 3}
   enemyPrefab:
-  - {fileID: 1296266746418043420, guid: f4ba42c5039175510aac8930256c53b4, type: 3}
   - {fileID: 1296266746418043420, guid: a28eb5954299db15ebb7d59e6b22b36c, type: 3}
+  - {fileID: 1296266746418043420, guid: f4ba42c5039175510aac8930256c53b4, type: 3}
   - {fileID: 1296266746418043420, guid: d1d06405e463882529cf453264485892, type: 3}
   - {fileID: 1296266746418043420, guid: 7692653921cd99881b562666c14a0a1a, type: 3}
 --- !u!4 &1929954930

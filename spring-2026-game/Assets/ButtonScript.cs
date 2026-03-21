@@ -25,7 +25,7 @@ public class ButtonScript : MonoBehaviour
             case 0:
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
-                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.NoDebuff,0,0));
+                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.NoDebuff,0,2));
                 });
                 break;
 
@@ -34,6 +34,7 @@ public class ButtonScript : MonoBehaviour
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff(1,0,10));
                 });
+                button.interactable = false;
                 break;
             
             case 2:
@@ -41,6 +42,7 @@ public class ButtonScript : MonoBehaviour
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Stun,2,1));
                 });
+                button.interactable = false;
                 break;
 
             case 3:
@@ -48,6 +50,7 @@ public class ButtonScript : MonoBehaviour
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Weaken,2,1));
                 });
+                button.interactable = false;
                 break;
 
             case 4:
@@ -55,6 +58,7 @@ public class ButtonScript : MonoBehaviour
                 button.onClick.AddListener( () => {
                     player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,-4));
                 });
+                button.interactable = false;
                 break;
         }
     }
