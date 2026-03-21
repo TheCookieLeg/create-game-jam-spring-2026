@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     //private GUIManager GUImanager;
     private List<Debuff> debuffs = new List<Debuff>();
     public List<Rune> inventory = new List<Rune>();
+
+    [SerializeField] private TextMeshProUGUI healthText; 
 
     private void OnEnable()
     {
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
             endTurn();
             return;
         }
-        
+
         GUIManager.instance.attackType(debuff);
         enemy.takeDamage(damage, debuff);
         endTurn();

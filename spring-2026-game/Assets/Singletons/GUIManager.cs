@@ -47,6 +47,9 @@ public class GUIManager : MonoBehaviour
 
         playerScript.onPlayerActionCompleted += playerEndTurn;
         playerScript.onPlayerDeath += playerDead;
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
         
     }
 
@@ -146,7 +149,7 @@ public class GUIManager : MonoBehaviour
             switch (debuff.type)
             {
                 case (int)TurnManager.Debuffs.Poison:
-                    attackDesc.text += "dealt extra damage to the enemy";
+                    attackDesc.text += $"dealt {debuff.damage} damage to the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Stun:
                     attackDesc.text += "stunned the enemy";
