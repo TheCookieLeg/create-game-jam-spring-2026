@@ -45,6 +45,14 @@ public class Player : MonoBehaviour
     public void attack(Debuff debuff)
     {
         Enemy enemy = TurnManager.instance.GetEnemyInstance().GetComponent<Enemy>();
+
+        if (debuff.type == 0)
+        {
+            enemy.takeDamage(damage, debuff);
+            endTurn();
+            return;
+        }
+
         if (debuff.damage != 0 && debuff.turns == 0)
         {
             enemy.takeDamage(damage + debuff.damage, debuff);
@@ -53,7 +61,10 @@ public class Player : MonoBehaviour
         }
 
         enemy.takeDamage(damage, debuff);
+        
         endTurn();
+
+        
     }
 
     public void takeDamage(int damage,  Debuff debuff = null) 
