@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -22,7 +23,13 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        TurnManager.instance.switchTurn += startTurn;   
+        TurnManager.instance.switchTurn += startTurn;  
+         
+    }
+
+    private void Start()
+    {
+        transform.name = transform.name.Replace("(clone)", " ").Trim();
     }
 
     private void OnDisable()
@@ -37,7 +44,8 @@ public class Enemy : MonoBehaviour
         if (this.gameObject != current) {return;}
 
         Debug.Log($"{this.gameObject.name} has started their turn");
-        attack();
+        StartCoroutine(DelayedAttack(current));
+        //attack();
     }
 
     public void startTurn()
@@ -89,6 +97,14 @@ public class Enemy : MonoBehaviour
     private void death()
     {
         onEnemyDeath?.Invoke(this.gameObject);
+    }
+
+    IEnumerator DelayedAttack(GameObject current)
+    {
+        yield return new WaitForSeconds(4);
+        Debug.Log("DelayedAttack() Started");
+        GUIManager.instance.ChangeText(current);
+        yield return new WaitForSeconds(2);
     }
 
 }

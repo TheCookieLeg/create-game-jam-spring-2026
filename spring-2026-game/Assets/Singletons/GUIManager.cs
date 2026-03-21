@@ -50,6 +50,7 @@ public class GUIManager : MonoBehaviour
         
     }
 
+    
 
     private void OnEnable()
     {
@@ -122,6 +123,11 @@ public class GUIManager : MonoBehaviour
         specialAtkDesc = Desc;
     }
 
+    public void ChangeText(GameObject current)
+    {
+        attackDesc.text = $"{current.name} attacks you";
+    }
+
 
     IEnumerator EndPlayerTurnWithDelay(GameObject player)
     {
@@ -161,6 +167,6 @@ public class GUIManager : MonoBehaviour
         {
             attackDesc.text = "you hit";
         }
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
     }
 }
