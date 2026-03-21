@@ -42,9 +42,18 @@ public class Player : MonoBehaviour
         doDebuff();
     }
 
-    public void attack()
+    public void attack(Debuff debuff)
     {
-        //enemy.takeDamage(damage, debuff)
+        Enemy enemy = TurnManager.instance.GetEnemyInstance().GetComponent<Enemy>();
+        if (debuff.damage != 0 && debuff.turns == 0)
+        {
+            enemy.takeDamage(damage + debuff.damage, debuff);
+            endTurn();
+            return;
+        }
+
+        enemy.takeDamage(damage, debuff);
+        endTurn();
     }
 
     public void takeDamage(int damage,  Debuff debuff = null) 
@@ -68,9 +77,7 @@ public class Player : MonoBehaviour
             //debuff.doDebuff()
             //if (debuff.turns <=0)
                 //debuffs.remove(debuff)
-        
-
-        Debuff debuff = new Debuff(1,1);
+    
 
         if (hp <= 0)
         {

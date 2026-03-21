@@ -9,18 +9,9 @@ public class Rune : MonoBehaviour
 
     public Debuff debuff;
 
-    [System.Serializable]
-    public enum Debuffs
-    {
-        NoDebuff,
-        Poison,
-        Stun,
-        Weaken,
-        Heal
-    }
 
 
-    [SerializeField] public Debuffs debuf;
+    [SerializeField] public TurnManager.Debuffs debuf;
 
     public void Awake()
     {

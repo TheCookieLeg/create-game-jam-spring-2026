@@ -15,9 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log(TurnManager.instance == null);
-        TurnManager.instance.switchTurn += startTurn;
-        
+        TurnManager.instance.switchTurn += startTurn;   
     }
 
     private void OnDisable()
@@ -32,7 +30,7 @@ public class Enemy : MonoBehaviour
         if (this.gameObject != current) {return;}
 
         Debug.Log($"{this.gameObject.name} has started their turn");
-        endTurn();
+        attack();
     }
 
     public void startTurn()
@@ -47,7 +45,7 @@ public class Enemy : MonoBehaviour
         //player = turnHandler.instance.getPlayer();
     }
 
-    public void takeDamage(int damage/*,  Debuff debuff */)
+    public void takeDamage(int damage, Debuff debuff)
     {
         hp -= damage;
         //Debuffs.add(debuff)
@@ -68,7 +66,9 @@ public class Enemy : MonoBehaviour
 
     public void attack()
     {
-        //player.takeDamage(damage, debuff)
+        Debuff debuff = new Debuff((int)TurnManager.Debuffs.NoDebuff, 0);
+        TurnManager.instance.GetPlayerInstance().GetComponent<Player>().takeDamage(damage, debuff);
+        endTurn();
     }
 
     private void death()

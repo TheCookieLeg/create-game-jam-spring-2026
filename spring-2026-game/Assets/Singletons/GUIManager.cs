@@ -8,7 +8,7 @@ public class GUIManager : MonoBehaviour
     private Player playerScript;
     private Enemy enemyScript;
 
-    void Awake() 
+    void Start() 
     {
         if (instance != null && instance != this) {
             Destroy(this);
@@ -29,6 +29,12 @@ public class GUIManager : MonoBehaviour
         } else {
             Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
         }
+
+        playerScript.onPlayerActionCompleted += playerEndTurn;
+        playerScript.onPlayerDeath += playerDead;
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
     }
 
 
@@ -36,11 +42,7 @@ public class GUIManager : MonoBehaviour
     {
 
 
-        playerScript.onPlayerActionCompleted += playerEndTurn;
-        playerScript.onPlayerDeath += playerDead;
-
-        enemyScript.onEnemyActionCompleted += enemyEndTurn;
-        enemyScript.onEnemyDeath += enemyDead;
+        
     }
 
     private void OnDisable()
