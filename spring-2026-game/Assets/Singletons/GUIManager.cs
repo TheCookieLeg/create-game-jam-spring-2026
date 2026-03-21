@@ -89,7 +89,7 @@ public class GUIManager : MonoBehaviour
     private void enemyEndTurn(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} ended their turn");
-
+        Debug.Log("HELLO??");
         attackDesc.gameObject.SetActive(false);
         actionBar.SetActive(true);
         if (specialAtkDesc != null)
@@ -97,8 +97,8 @@ public class GUIManager : MonoBehaviour
             attackDesc.text = specialAtkDesc;
         }
 
-        for(int i = 0; i <= playerScript.inventory.Count; i++)
-            Instantiate(playerScript.inventory[i], runePositions[i]);
+        //for(int i = 0; i <= playerScript.inventory.Count; i++)
+            //Instantiate(playerScript.inventory[i], runePositions[i]);
     }
 
     private void enemyDead(GameObject enemy)

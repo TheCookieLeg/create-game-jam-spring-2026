@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        transform.name = transform.name.Replace("(clone)", " ").Trim();
+        transform.name = transform.name.Replace("(clone)", "").Trim();
     }
 
     private void OnDisable()
@@ -105,6 +105,8 @@ public class Enemy : MonoBehaviour
         Debug.Log("DelayedAttack() Started");
         GUIManager.instance.ChangeText(current);
         yield return new WaitForSeconds(2);
+        attack();
+    
     }
 
 }
