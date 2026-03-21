@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     //private Enemy enemy;
     //private TurnHandler turnHandler;
     //private GUIManager GUImanager;
-    //private List<Debuff> debuffs = new List<Debuff>();
+    private List<Debuff> debuffs = new List<Debuff>();
     //private List<Rune> inventory = new List<Rune>();
 
     public void onEncounterStart()
@@ -23,8 +24,6 @@ public class Player : MonoBehaviour
     public void startTurn()
     {
         //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
-        //foreach(Debuff debuff in debuffs)
-            //debuff.doDebuff
     }
 
     public void attack()
@@ -32,12 +31,16 @@ public class Player : MonoBehaviour
         //enemy.takeDamage(damage, debuff)
     }
 
-    public void takeDamage(int damage/*,  Debuff debuff */) 
+    public void takeDamage(int damage,  Debuff debuff = null) 
     {
         hp -= damage;
         if (hp <= 0)
         {
             death();
+        }
+        if (debuff != null)
+        {
+            debuffs.Add(debuff);
         }
         //Debuffs.add(debuff)
     }
@@ -66,6 +69,31 @@ public class Player : MonoBehaviour
     private void death()
     {
         onPlayerDeath?.Invoke(this.gameObject);
+    }
+
+    private void doDebuff()
+    {
+        foreach (Debuff debuff in debuffs)
+        {
+            switch (debuff.type)
+            {
+                case 1:
+                    //poison
+                    debuff.turns--;
+                    break;
+                case 2:
+                    //stun
+                    debuff.turns--;
+                    break;
+                case 3:
+                    //weaken
+                    debuff.turns--;
+                    break;
+                default:
+                    debuff.turns--;
+                    break;
+            }
+        }
     }
 
     /* -= TEMPORARY BELOW =- */
