@@ -51,10 +51,6 @@ public class Player : MonoBehaviour
                 //debuffs.remove(debuff)
         onPlayerActionCompleted?.Invoke(this.gameObject);
 
-        // temp
-        hp -= 3;
-        // temp
-
         Debuff debuff = new Debuff(1,1);
 
         if (hp <= 0)
