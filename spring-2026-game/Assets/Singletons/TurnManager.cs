@@ -4,8 +4,10 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager instance {get; private set;}
-    private Player player;
-    private Enemy enemy;
+    private GameObject player;
+    private GameObject enemy;
+    private Player playerScript;
+    private Enemy enemyScript;
 
     void Awake() 
     {
@@ -14,37 +16,49 @@ public class TurnManager : MonoBehaviour
         } else {
             instance = this;
         }
-    }
 
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        if (player == null) { Debug.LogError("Player is null"); }
-        enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
-        if (enemy == null) { Debug.LogError("Enemy is null"); }
+        player = GameObject.FindWithTag("Player");
+        if (player != null) { 
+            playerScript = player.GetComponent<Player>();
+        } else {
+            Debug.LogWarning("Player was not found. Try instantiating a new player");
+        }
+
+        enemy = GameObject.FindWithTag("Enemy");
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
     }
 
     private void OnEnable()
     {
-        player.onPlayerActionCompleted += PlayerEndTurn;
+        playerScript.onPlayerActionCompleted += PlayerEndTurn;
+        playerScript.onPlayerDeath += playerDead;
     }
 
     private void OnDisable()
     {
-        player.onPlayerActionCompleted -= PlayerEndTurn;
+        playerScript.onPlayerActionCompleted -= PlayerEndTurn;
+        playerScript.onPlayerDeath -= playerDead;
     }
 
 
 
-    private void PlayerEndTurn(Player player)
+    private void PlayerEndTurn(GameObject player)
     {
-        Debug.Log($"{player} has ended their turn");
+        Debug.Log($"{player.name} has ended their turn");
+    }
+
+    private void playerDead(GameObject player)
+    {
+        Debug.Log($"{player.name} has died");
     }
 
 
 
-
-    public Player GetPlayerInstance() { return player; }
-    public Enemy GetEnemyInstance() { return enemy; }
+    public GameObject GetPlayerInstance() { return player; }
+    public GameObject GetEnemyInstance() { return enemy; }
 
 }

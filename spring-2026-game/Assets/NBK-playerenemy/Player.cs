@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public event Action<Player> onPlayerActionCompleted;
+    public event Action<GameObject> onPlayerActionCompleted;
+    public event Action<GameObject> onPlayerDeath;
     // Event for player death?
 
     [SerializeField] private int hp = 10;
@@ -48,8 +49,11 @@ public class Player : MonoBehaviour
             //debuff.doDebuff()
             //if (debuff.turns <=0)
                 //debuffs.remove(debuff)
+        onPlayerActionCompleted?.Invoke(this.gameObject);
 
-        onPlayerActionCompleted?.Invoke(this);
+        // temp
+        hp -= 3;
+        // temp
 
         Debuff debuff = new Debuff(1,1);
 
@@ -61,7 +65,7 @@ public class Player : MonoBehaviour
 
     private void death()
     {
-
+        onPlayerDeath?.Invoke(this.gameObject);
     }
 
     /* -= TEMPORARY BELOW =- */
