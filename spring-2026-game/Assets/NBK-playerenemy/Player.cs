@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using FMODUnity;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -107,6 +108,7 @@ public class Player : MonoBehaviour
         {
             case 2:
                 RuntimeManager.PlayOneShot("event:/Player/player_spell_stun");
+                StartCoroutine(playAnim());
                 break;
 
             case 3:
@@ -203,5 +205,11 @@ public class Player : MonoBehaviour
                 debuffs.RemoveAt(i);
             }
         }
+    }
+    IEnumerator playAnim()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }
