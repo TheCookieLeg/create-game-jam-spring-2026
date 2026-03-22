@@ -2,27 +2,24 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using FMODUnity;
 
 public class Player : MonoBehaviour
 {
     public event Action<GameObject> onPlayerActionCompleted;
     public event Action<GameObject> onPlayerDeath;
-    // Event for player death?
 
     [SerializeField] private int hp = 10;
     [SerializeField] private int damage = 5;
-    //private Enemy enemy;
-    //private TurnHandler turnHandler;
-    //private GUIManager GUImanager;
+
     private List<Debuff> debuffs = new List<Debuff>();
     public List<Rune> inventory = new List<Rune>();
 
-    [SerializeField] private TextMeshProUGUI healthText; 
+    [SerializeField] private TextMeshProUGUI healthText;
 
     private void OnEnable()
     {
         TurnManager.instance.switchTurn += startTurn;
-        
     }
 
     private void OnDisable()
@@ -34,43 +31,50 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Finding health");
         healthText = GameObject.FindWithTag("HealthText").GetComponent<TextMeshProUGUI>();
+
         if (healthText == null)
         {
             Debug.LogWarning("Couldnt find health :(");
+            return;
         }
+
         healthText.text = $"Health: {hp}";
     }
 
     public void onEncounterStart()
     {
-        //Enemy = Turnhandler.instance.getEnemy();
+        // optional
     }
 
     public void startTurn(GameObject current)
     {
-        //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
-        if (this.gameObject != current) {return;}
+        if (this.gameObject != current) return;
 
         Debug.Log($"{this.gameObject.name} has started their turn");
-
         doDebuff();
     }
 
     public void attack(Debuff debuff)
     {
-        Debug.Log("Attack with the debuff: " + debuff.type);
+        Debug.Log("Attack with debuff: " + debuff.type);
+
         Enemy enemy = TurnManager.instance.GetEnemyInstance().GetComponent<Enemy>();
 
+        // Normal attack
         if (debuff.type == 0)
         {
+            RuntimeManager.PlayOneShot("event:/Player/player_attack");
             enemy.takeDamage(damage, debuff);
             endTurn();
             return;
         }
 
+        // Heal rune
         if (debuff.type == 4)
         {
+            RuntimeManager.PlayOneShot("event:/Player/player_spell_heal");
             GUIManager.instance.attackType(debuff);
+
             heal(debuff.damage);
             enemy.takeDamage(0, debuff);
 
@@ -78,58 +82,77 @@ public class Player : MonoBehaviour
             return;
         }
 
+        // Direct damage rune
         if (debuff.damage != 0 && debuff.turns == 0)
         {
+            RuntimeManager.PlayOneShot("event:/Player/player_spell_damage");
             GUIManager.instance.attackType(debuff);
+
             enemy.takeDamage(damage + debuff.damage, debuff);
-            
+
             endTurn();
             return;
         }
 
+        // Stun / Weaken / fallback
+        switch (debuff.type)
+        {
+            case 2:
+                RuntimeManager.PlayOneShot("event:/Player/player_spell_stun");
+                break;
+
+            case 3:
+                RuntimeManager.PlayOneShot("event:/Player/player_spell_weaken");
+                break;
+
+            default:
+                RuntimeManager.PlayOneShot("event:/Player/player_spell_damage");
+                break;
+        }
+
         GUIManager.instance.attackType(debuff);
         enemy.takeDamage(damage, debuff);
-        endTurn();
 
-        
+        endTurn();
     }
 
     public void heal(int n)
     {
         hp += n;
+        if (healthText != null)
+        {
+            healthText.text = $"Health: {hp}";
+        }
     }
 
-    public void takeDamage(int damage,  Debuff debuff = null) 
+    public void takeDamage(int damage, Debuff debuff = null)
     {
         hp -= damage;
-        healthText.text = $"Health: {hp}";
+
+        if (healthText != null)
+        {
+            healthText.text = $"Health: {hp}";
+        }
+
         if (hp <= 0)
         {
             death();
         }
+
         if (debuff != null)
         {
             debuffs.Add(debuff);
         }
-        //Debuffs.add(debuff)
     }
 
     public void endTurn()
     {
-        //GUI
-        //foreach(Debuff debuff in debuffs)
-            //debuff.doDebuff()
-            //if (debuff.turns <=0)
-                //debuffs.remove(debuff)
-    
-
         if (hp <= 0)
         {
             death();
         }
 
         onPlayerActionCompleted?.Invoke(this.gameObject);
-
     }
 
     private void death()
@@ -141,27 +164,7 @@ public class Player : MonoBehaviour
     {
         foreach (Debuff debuff in debuffs)
         {
-            switch (debuff.type)
-            {
-                case 1:
-                    //poison
-                    debuff.turns--;
-                    break;
-                case 2:
-                    //stun
-                    debuff.turns--;
-                    break;
-                case 3:
-                    //weaken
-                    debuff.turns--;
-                    break;
-                default:
-                    debuff.turns--;
-                    break;
-            }
+            debuff.turns--;
         }
     }
-
-    /* -= TEMPORARY BELOW =- */
-
 }
