@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -108,6 +109,14 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(enemy.gameObject);
         enemyIndex++;
+
+        if (enemyIndex > 3)
+        {
+            GUIManager.instance.ChangeText("You did it... They're all finally gone...");
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} approaches you...");
         yield return new WaitForSeconds(3);
         enemy = Instantiate(enemyPrefab[enemyIndex]);
