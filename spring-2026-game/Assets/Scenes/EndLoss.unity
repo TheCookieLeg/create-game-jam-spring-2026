@@ -886,7 +886,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: After years of torment, the crooked monsters of the forest are no more...
+  m_text: Yet another falls to the might of the crooked monsters
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94dc19c30086be1918cf8f205e7f04c9, type: 2}
   m_sharedMaterial: {fileID: -8455358578957578206, guid: 94dc19c30086be1918cf8f205e7f04c9, type: 2}
