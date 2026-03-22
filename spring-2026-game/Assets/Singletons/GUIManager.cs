@@ -12,7 +12,7 @@ public class GUIManager : MonoBehaviour
     private Enemy enemyScript;
 
     [SerializeField] private GameObject actionBar;
-    [SerializeField] private TextMeshPro attackDesc;
+    [SerializeField] private TextMeshProUGUI attackDesc;
     [SerializeField] private Transform[] runePositions;
     private Debuff debuff;
     private string specialAtkDesc;
@@ -21,7 +21,7 @@ public class GUIManager : MonoBehaviour
     IEnumerator Start() 
     {
         if (instance != null && instance != this) {
-            Destroy(this);
+            Destroy(this.gameObject);
         } else {
             instance = this;
         }
@@ -45,9 +45,15 @@ public class GUIManager : MonoBehaviour
             Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
         }
 
+        playerScript.onPlayerActionCompleted += playerEndTurn;
+        playerScript.onPlayerDeath += playerDead;
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
         
     }
 
+    
 
     private void OnEnable()
     {
@@ -70,37 +76,7 @@ public class GUIManager : MonoBehaviour
 
     private void playerEndTurn(GameObject player)
     {
-        Debug.Log($"GUI: {player.name} ended their turn");
-        actionBar.SetActive(false);
-        attackDesc.gameObject.SetActive(true);
-
-
-        if (debuff != null)
-        {
-            attackDesc.text = "you activate a rune and ";
-            switch (debuff.type)
-            {
-                case (int)TurnManager.Debuffs.Poison:
-                    attackDesc.text += "poisoned the enemy";
-                    break;
-                case (int)TurnManager.Debuffs.Stun:
-                    attackDesc.text += "stunned the enemy";
-                    break;
-                case (int)TurnManager.Debuffs.Weaken:
-                    attackDesc.text += "weakend the enemy";
-                    break;
-                case (int)TurnManager.Debuffs.Heal:
-                    attackDesc.text += "healed yourself";
-                    break;
-                default:
-                    break;
-            }
-            debuff = null;
-        }
-        else
-        {
-            attackDesc.text = "you hit";
-        }
+        StartCoroutine(EndPlayerTurnWithDelay(player));
 
     }
 
@@ -113,10 +89,9 @@ public class GUIManager : MonoBehaviour
     }
 
 
-    private void enemyEndTurn(GameObject enemy)
+    public void enemyEndTurn(GameObject enemy)
     {
         Debug.Log($"GUI: {enemy.name} ended their turn");
-
         attackDesc.gameObject.SetActive(false);
         actionBar.SetActive(true);
         if (specialAtkDesc != null)
@@ -124,8 +99,8 @@ public class GUIManager : MonoBehaviour
             attackDesc.text = specialAtkDesc;
         }
 
-        for(int i = 0; i <= playerScript.inventory.Count; i++)
-            Instantiate(playerScript.inventory[i], runePositions[i]);
+        //for(int i = 0; i <= playerScript.inventory.Count; i++)
+            //Instantiate(playerScript.inventory[i], runePositions[i]);
     }
 
     private void enemyDead(GameObject enemy)
@@ -135,16 +110,85 @@ public class GUIManager : MonoBehaviour
         actionBar.SetActive(false);
         attackDesc.gameObject.SetActive(true);
 
-        attackDesc.text = "enemy dead";
+        attackDesc.text = "You have brutally slain the enemy";
     }
 
     public void attackType(Debuff debuff)
     {
-        debuff = this.debuff;
+        Debug.Log("ATTACK TYPE HERE");
+        this.debuff = debuff;
+        Debug.Log($"Switched GUI debuff to: {debuff.type}");
     }
 
     public void specialAttack(string Desc)
     {
         specialAtkDesc = Desc;
+    }
+
+    public void ChangeText(string str)
+    {
+        attackDesc.text = str;
+    }
+
+
+    IEnumerator EndPlayerTurnWithDelay(GameObject player)
+    {
+        Debug.Log($"GUI: {player.name} ended their turn");
+        actionBar.SetActive(false);
+        attackDesc.gameObject.SetActive(true);
+
+        Debug.Log("Debuff status: " + (debuff != null));
+        //Debug.Log($"In the enumerator, the debuff type is {debuff.type}");
+        
+
+        if (debuff != null)
+        {
+            attackDesc.text = "you activate a rune and ";
+            Debug.Log("First text changed");
+            switch (debuff.type)
+            {
+                case (int)TurnManager.Debuffs.Poison:
+                    attackDesc.text += $"dealt great damage to the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Stun:
+                    attackDesc.text += "stun the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Weaken:
+                    attackDesc.text += "weaken the enemy";
+                    break;
+                case (int)TurnManager.Debuffs.Heal:
+                    attackDesc.text += "feel invigorated";
+                    break;
+                default:
+                
+                    break;
+            }
+            debuff = null;
+        }
+        else
+        {
+            attackDesc.text = "You hit the enemy, dealing damage";
+        }
+        yield return new WaitForSeconds(2);
+    }
+
+    public void UnsubscribeFromEvents()
+    {
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
+    }
+
+    public void UpdateEnemyReference()
+    {
+        enemy = TurnManager.instance.GetEnemyInstance();
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
+        
     }
 }

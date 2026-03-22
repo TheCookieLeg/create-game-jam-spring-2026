@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class TurnManager : MonoBehaviour
     private GameObject currentTurn;
 
     public event Action<GameObject> switchTurn;
+
+    private int enemyIndex = 0;
 
     [System.Serializable]
     public enum Debuffs
@@ -42,7 +46,7 @@ public class TurnManager : MonoBehaviour
             Debug.LogWarning("Player was not found. Try instantiating a new player");
         }
 
-        enemy = Instantiate(enemyPrefab[3]);
+        enemy = Instantiate(enemyPrefab[enemyIndex]);
         if (enemy != null) {
             enemyScript = enemy.GetComponent<Enemy>();
         } else {
@@ -79,6 +83,15 @@ public class TurnManager : MonoBehaviour
     private void playerDead(GameObject player)
     {
         Debug.Log($"{player.name} has died");
+        StartCoroutine(delayedPlayerDeath());
+    }
+
+    IEnumerator delayedPlayerDeath()
+    {
+        yield return new WaitForSeconds(2);
+        GUIManager.instance.ChangeText($"It seems you were no match...");
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("EndLoss", LoadSceneMode.Single);
     }
 
 
@@ -90,7 +103,48 @@ public class TurnManager : MonoBehaviour
 
     private void enemyDead(GameObject enemy)
     {
-        Debug.Log($"{enemy.name} has died, oh no!");
+        StartCoroutine(newEncounter());
+    }
+
+    IEnumerator newEncounter()
+    {
+        yield return new WaitForSeconds(2);
+        GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} has been brutally slain...");
+
+        enemyScript.onEnemyActionCompleted -= enemyEndTurn;
+        enemyScript.onEnemyDeath -= enemyDead;
+        GUIManager.instance.UnsubscribeFromEvents();
+
+        yield return new WaitForSeconds(2);
+        Destroy(enemy.gameObject);
+        enemyIndex++;
+
+        if (enemyIndex > 3)
+        {
+            GUIManager.instance.ChangeText("You did it... They're all finally gone...");
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("EndWin", LoadSceneMode.Single);
+            yield break;
+        }
+
+        GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} approaches you...");
+        yield return new WaitForSeconds(3);
+        enemy = Instantiate(enemyPrefab[enemyIndex]);
+
+        if (enemy != null) {
+            enemyScript = enemy.GetComponent<Enemy>();
+        } else {
+            Debug.LogWarning("Enemy was not found. Try instantiating a new enemy");
+        }
+
+        enemyScript.onEnemyActionCompleted += enemyEndTurn;
+        enemyScript.onEnemyDeath += enemyDead;
+
+        GUIManager.instance.UpdateEnemyReference();
+
+        switchTurn?.Invoke(player);
+        yield return new WaitForSeconds(1.2f);
+        GUIManager.instance.enemyEndTurn(enemy);
     }
 
 

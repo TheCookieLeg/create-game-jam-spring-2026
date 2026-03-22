@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636465af15987b438b6abdb5d13e208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  hp: 10
-  damage: 5
+  hp: 5
+  damage: 1
   inventory: []
+  healthText: {fileID: 0}
