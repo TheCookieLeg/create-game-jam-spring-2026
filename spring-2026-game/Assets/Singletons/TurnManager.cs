@@ -124,6 +124,7 @@ public class TurnManager : MonoBehaviour
             GUIManager.instance.ChangeText("You did it... They're all finally gone...");
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("EndWin", LoadSceneMode.Single);
+            yield break;
         }
 
         GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} approaches you...");

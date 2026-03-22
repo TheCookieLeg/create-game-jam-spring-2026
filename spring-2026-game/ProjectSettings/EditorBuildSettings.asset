@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/NBK-playerenemy/MainGame.unity
+    guid: 401be5fe13ce5b0469d9c317aef2abaf
+  - enabled: 1
     path: Assets/Scenes/EndWIn.unity
     guid: 74c69399e59f0230eb67a20662f16152
   - enabled: 1
