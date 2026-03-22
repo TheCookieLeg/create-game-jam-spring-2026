@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
 using FMODUnity;
+using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
+    private static readonly int Trigger = Animator.StringToHash("trigger");
     public event Action<GameObject> onEnemyActionCompleted;
     public event Action<GameObject> onEnemyDeath;
 
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int debuffTurns;
     [SerializeField] private int debuffDamage;
     [SerializeField] private TurnManager.Debuffs debuff;
+    [SerializeField] private bool elver = false;
     private bool isDead = false;
     private List<Debuff> debuffs = new List<Debuff>();
     private bool stunned = false;
@@ -124,9 +127,20 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (!stunned)
         {
+            if (elver)
+            {
+                transform.GetChild(0).gameObject.SetActive(true);
+                //transform.GetChild(0).GetComponent<Animator>().SetTrigger(Trigger);
+            }
+            
             GUIManager.instance.ChangeText(this.normalAttackDesc);
             yield return new WaitForSeconds(3);
+            if (elver)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
             attack();
+            
         }
         else
         {
