@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
         
         if (weakend)
         {
-            TurnManager.instance.GetPlayerInstance().GetComponent<Player>().takeDamage(0, debuff);
+            TurnManager.instance.GetPlayerInstance().GetComponent<Player>().takeDamage(1, debuff);
             endTurn();
         }
         else
