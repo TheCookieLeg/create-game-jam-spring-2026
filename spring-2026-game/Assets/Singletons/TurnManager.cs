@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -82,6 +83,15 @@ public class TurnManager : MonoBehaviour
     private void playerDead(GameObject player)
     {
         Debug.Log($"{player.name} has died");
+        StartCoroutine(delayedPlayerDeath());
+    }
+
+    IEnumerator delayedPlayerDeath()
+    {
+        yield return new WaitForSeconds(2);
+        GUIManager.instance.ChangeText($"It seems you were no match...");
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("EndLoss", LoadSceneMode.Single);
     }
 
 
@@ -108,6 +118,15 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(enemy.gameObject);
         enemyIndex++;
+
+        if (enemyIndex > 3)
+        {
+            GUIManager.instance.ChangeText("You did it... They're all finally gone...");
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("EndWin", LoadSceneMode.Single);
+            yield break;
+        }
+
         GUIManager.instance.ChangeText($"{enemyPrefab[enemyIndex].name} approaches you...");
         yield return new WaitForSeconds(3);
         enemy = Instantiate(enemyPrefab[enemyIndex]);

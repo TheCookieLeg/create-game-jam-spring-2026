@@ -1,0 +1,754 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7696844667217587799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/mosekone_spawn
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/mosekone_spawn
+  Guid:
+    Data1: -1355667182
+    Data2: 1291607201
+    Data3: 586510983
+    Data4: 1679958738
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-7619918410450582337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/player_spell_damage
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/player_spell_damage
+  Guid:
+    Data1: -1569507897
+    Data2: 1216268734
+    Data3: -1582450541
+    Data4: 1318764972
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2262
+--- !u!114 &-7348642580100945526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/player_spell_heal
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/player_spell_heal
+  Guid:
+    Data1: -1988099982
+    Data2: 1195484568
+    Data3: -1214524515
+    Data4: -212761677
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2668
+--- !u!114 &-7337480035356869784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/mosekone_special
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/mosekone_special
+  Guid:
+    Data1: -1450962233
+    Data2: 1246562940
+    Data3: 412931512
+    Data4: 370180957
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3717
+--- !u!114 &-4831979390613090414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMOD/Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639097686273456732
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-4737512030020984863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/player_attack
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/player_attack
+  Guid:
+    Data1: 902043561
+    Data2: 1110189001
+    Data3: 1365737110
+    Data4: -1659348005
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-3829850304223167227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/ellepige_spawn
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/ellepige_spawn
+  Guid:
+    Data1: -261069731
+    Data2: 1212897119
+    Data3: 1815090095
+    Data4: 1740518345
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3886
+--- !u!114 &-3588809168556581666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/ellepige_special
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/ellepige_special
+  Guid:
+    Data1: -993347018
+    Data2: 1154091933
+    Data3: 1853636234
+    Data4: -1940534624
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1507
+--- !u!114 &-3249145016653315786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/ellepige_attack
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/ellepige_attack
+  Guid:
+    Data1: -28804627
+    Data2: 1327917705
+    Data3: 1555836058
+    Data4: -1025464728
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-2960724047742551747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI_Select
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI_Select
+  Guid:
+    Data1: -1061489898
+    Data2: 1180046066
+    Data3: 848595378
+    Data4: -633622827
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2052
+--- !u!114 &-1424761721892949327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/gravso_special
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/gravso_special
+  Guid:
+    Data1: 589453479
+    Data2: 1194485908
+    Data3: -537872502
+    Data4: -835376904
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3298
+--- !u!114 &-549092215982429304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/player_spell_stun
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/player_spell_stun
+  Guid:
+    Data1: 1150924668
+    Data2: 1315838646
+    Data3: -1893820255
+    Data4: 1950894772
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1719
+--- !u!114 &-422563102188654595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/ellepige_death
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/ellepige_death
+  Guid:
+    Data1: -1302291511
+    Data2: 1153322981
+    Data3: 761632696
+    Data4: -177762578
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3002
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 2264903407871705663}
+  - {fileID: -4831979390613090414}
+  EditorEvents:
+  - {fileID: 2578829048117972017}
+  - {fileID: -2960724047742551747}
+  - {fileID: 3098024570274481104}
+  - {fileID: 4120742353150774567}
+  - {fileID: 1292265127601877519}
+  - {fileID: -7696844667217587799}
+  - {fileID: 6990141951908735054}
+  - {fileID: -3588809168556581666}
+  - {fileID: 1636059113085382441}
+  - {fileID: -3829850304223167227}
+  - {fileID: -7348642580100945526}
+  - {fileID: -549092215982429304}
+  - {fileID: 6247176368780431925}
+  - {fileID: -1424761721892949327}
+  - {fileID: -4737512030020984863}
+  - {fileID: -7337480035356869784}
+  - {fileID: -7619918410450582337}
+  - {fileID: -3249145016653315786}
+  - {fileID: 16676550781466023}
+  - {fileID: 7626433237797277092}
+  - {fileID: 986714437105427607}
+  - {fileID: 3843705657273361198}
+  - {fileID: -422563102188654595}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -4831979390613090414}
+  StringsBanks:
+  - {fileID: 2264903407871705663}
+  cacheVersion: 131858
+  cacheTime: 639097686273457947
+  SerializableEventsDict:
+  - key: event:/Music_main
+    index: 0
+  - key: event:/UI_Select
+    index: 1
+  - key: event:/UI_Confirm
+    index: 2
+  - key: event:/Monsters/lygtemand_special
+    index: 3
+  - key: event:/Monsters/lygtemand_spawn
+    index: 4
+  - key: event:/Monsters/mosekone_spawn
+    index: 5
+  - key: event:/Player/player_spell_weaken
+    index: 6
+  - key: event:/Monsters/ellepige_special
+    index: 7
+  - key: event:/Monsters/gravso_spawn
+    index: 8
+  - key: event:/Monsters/ellepige_spawn
+    index: 9
+  - key: event:/Player/player_spell_heal
+    index: 10
+  - key: event:/Player/player_spell_stun
+    index: 11
+  - key: event:/Monsters/lygtemand_attack
+    index: 12
+  - key: event:/Monsters/gravso_special
+    index: 13
+  - key: event:/Player/player_attack
+    index: 14
+  - key: event:/Monsters/mosekone_special
+    index: 15
+  - key: event:/Player/player_spell_damage
+    index: 16
+  - key: event:/Monsters/ellepige_attack
+    index: 17
+  - key: event:/Monsters/gravso_attack
+    index: 18
+  - key: event:/Monsters/lygtemand_death
+    index: 19
+  - key: event:/Monsters/gravso_death
+    index: 20
+  - key: event:/Monsters/mosekone_death
+    index: 21
+  - key: event:/Monsters/ellepige_death
+    index: 22
+--- !u!114 &16676550781466023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/gravso_attack
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/gravso_attack
+  Guid:
+    Data1: -1596242959
+    Data2: 1297134004
+    Data3: 666257295
+    Data4: -1011101427
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &986714437105427607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/gravso_death
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/gravso_death
+  Guid:
+    Data1: 1610552404
+    Data2: 1308057381
+    Data3: -904345159
+    Data4: -1693684744
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3201
+--- !u!114 &1292265127601877519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/lygtemand_spawn
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/lygtemand_spawn
+  Guid:
+    Data1: 262204427
+    Data2: 1280277074
+    Data3: 1415845279
+    Data4: 679602209
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2096
+--- !u!114 &1636059113085382441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/gravso_spawn
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/gravso_spawn
+  Guid:
+    Data1: -140429507
+    Data2: 1152005534
+    Data3: 5791138
+    Data4: 968876916
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &2264903407871705663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMOD/Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639097686273457947
+  FileSizes:
+  - Name: 
+    Value: 1882
+  Exists: 1
+--- !u!114 &2578829048117972017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music_main
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music_main
+  Guid:
+    Data1: 219281383
+    Data2: 1331723078
+    Data3: -1962765676
+    Data4: 1299716234
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 74805
+--- !u!114 &3098024570274481104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI_Confirm
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI_Confirm
+  Guid:
+    Data1: -762285283
+    Data2: 1215950205
+    Data3: -1302006087
+    Data4: 2042368774
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2082
+--- !u!114 &3843705657273361198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/mosekone_death
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/mosekone_death
+  Guid:
+    Data1: 670062979
+    Data2: 1244423279
+    Data3: 2146952125
+    Data4: -1970649652
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2605
+--- !u!114 &4120742353150774567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/lygtemand_special
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/lygtemand_special
+  Guid:
+    Data1: 1897043206
+    Data2: 1265351470
+    Data3: -1607196011
+    Data4: -1257309722
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2519
+--- !u!114 &6247176368780431925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/lygtemand_attack
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/lygtemand_attack
+  Guid:
+    Data1: -336642925
+    Data2: 1155355430
+    Data3: -458371703
+    Data4: 1816104886
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2404
+--- !u!114 &6990141951908735054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/player_spell_weaken
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/player_spell_weaken
+  Guid:
+    Data1: -1025231316
+    Data2: 1309033843
+    Data3: 1542216333
+    Data4: -1846006256
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2425
+--- !u!114 &7626433237797277092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monsters/lygtemand_death
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Monsters/lygtemand_death
+  Guid:
+    Data1: -707887537
+    Data2: 1135603606
+    Data3: 1684628649
+    Data4: 1738609697
+  Banks:
+  - {fileID: -4831979390613090414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2990
