@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
+using FMODUnity;
 
 public class Enemy : MonoBehaviour
 {
@@ -42,11 +43,14 @@ public class Enemy : MonoBehaviour
 
     public void startTurn(GameObject current)
     {
+        stunned = false;
+        weakend = false;
         //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
         if (this.gameObject != current) {return;}
 
         Debug.Log($"{this.gameObject.name} has started their turn");
         //StartCoroutine(DelayedAttack(current));
+        doDebuff();
 
         StartCoroutine(DelayedAttack(current));
         //attack();
@@ -67,7 +71,11 @@ public class Enemy : MonoBehaviour
     public void takeDamage(int damage, Debuff debuff)
     {
         hp -= damage;
-        //Debuffs.add(debuff)
+        
+        if (debuff.type != 0 && debuff.damage != 0)
+        {
+            debuffs.Add(debuff);
+        }
         if (hp <= 0)
         {
             isDead = true;
@@ -114,9 +122,17 @@ public class Enemy : MonoBehaviour
         if (isDead) { yield break; }
 
         yield return new WaitForSeconds(3);
-        GUIManager.instance.ChangeText(this.normalAttackDesc);
-        yield return new WaitForSeconds(3);
-        attack();
+        if (!stunned)
+        {
+            GUIManager.instance.ChangeText(this.normalAttackDesc);
+            yield return new WaitForSeconds(3);
+            attack();
+        }
+        else
+        {
+            endTurn();
+        }
+
     }
 
     private void PlaySpawnSound()
@@ -164,5 +180,77 @@ public class Enemy : MonoBehaviour
 
         return "";
     }
+    private string GetAttackEventPath()
+    {
+        string enemyName = transform.name.ToLower();
 
+        if (enemyName.Contains("gravso"))
+            return "event:/Monsters/gravso_attack";
+
+        if (enemyName.Contains("ellepige"))
+            return "event:/Monsters/ellepige_attack";
+
+        if (enemyName.Contains("lygtemand"))
+            return "event:/Monsters/lygtemand_attack";
+
+        if (enemyName.Contains("mosekone"))
+            return "event:/Monsters/mosekone_special";
+
+        return "";
+    }
+
+    private string GetDeathEventPath()
+    {
+        string enemyName = transform.name.ToLower();
+
+        if (enemyName.Contains("gravso"))
+            return "event:/Monsters/gravso_death";
+
+        if (enemyName.Contains("ellepige"))
+            return "event:/Monsters/ellepige_death";
+
+        if (enemyName.Contains("lygtemand"))
+            return "event:/Monsters/lygtemand_death";
+
+        if (enemyName.Contains("mosekone"))
+            return "event:/Monsters/mosekone_death";
+
+        return "";
+    }
+
+    private void doDebuff()
+    {
+        foreach (Debuff debuff in debuffs)
+        {
+            //Debug.Log("player " + debuff.type + debuff.turns + debuff.damage);
+            switch (debuff.type)
+            {
+                case 1:
+                    //poison
+                    debuff.turns--;
+                    break;
+                case 2:
+                    //stun
+                    stunned = true;
+                    debuff.turns--;
+                    break;
+                case 3:
+                    //weaken
+                    weakend = true;
+                    debuff.turns--;
+                    break;
+                default:
+                    debuff.turns--;
+                    break;
+            }
+
+        }
+        for (int i = 0; i < debuffs.Count; i++)
+        {
+            if (debuffs[i].turns <= 0)
+            {
+                debuffs.RemoveAt(i);
+            }
+        }
+    }
 }
