@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     //private GUIManager GUImanager;
     private List<Debuff> debuffs = new List<Debuff>();
     public List<Rune> inventory = new List<Rune>();
+    private bool stunned = false;
+    private bool weakend = false;
 
     [SerializeField] private TextMeshProUGUI healthText; 
 
@@ -48,12 +50,16 @@ public class Player : MonoBehaviour
 
     public void startTurn(GameObject current)
     {
+        stunned = false;
+        weakend = false;
         //GUImanager.instance.startPlayer(int hp, List<Rune> inventory)
         if (this.gameObject != current) {return;}
 
         Debug.Log($"{this.gameObject.name} has started their turn");
 
         doDebuff();
+
+        
     }
 
     public void attack(Debuff debuff)
@@ -107,21 +113,15 @@ public class Player : MonoBehaviour
         {
             death();
         }
-        if (debuff != null)
+        if (debuff.type != 0 && debuff.damage != 0)
         {
+            Debug.Log("runns");
             debuffs.Add(debuff);
         }
-        //Debuffs.add(debuff)
     }
 
     public void endTurn()
     {
-        //GUI
-        //foreach(Debuff debuff in debuffs)
-            //debuff.doDebuff()
-            //if (debuff.turns <=0)
-                //debuffs.remove(debuff)
-    
 
         if (hp <= 0)
         {
@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
     {
         foreach (Debuff debuff in debuffs)
         {
+            Debug.Log("player " + debuff.type + debuff.turns + debuff.damage);
             switch (debuff.type)
             {
                 case 1:
@@ -149,15 +150,24 @@ public class Player : MonoBehaviour
                     break;
                 case 2:
                     //stun
+                    stunned = true;
                     debuff.turns--;
                     break;
                 case 3:
                     //weaken
+                    weakend = true;
                     debuff.turns--;
                     break;
                 default:
                     debuff.turns--;
                     break;
+            }
+        }
+        for (int i = 0; i < debuffs.Count; i++)
+        {
+            if (debuffs[i].turns <= 0)
+            {
+                debuffs.RemoveAt(i);
             }
         }
     }
