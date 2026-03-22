@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     public event Action<GameObject> onEnemyActionCompleted;
     public event Action<GameObject> onEnemyDeath;
 
-    [SerializeField] private int hp = 10;
-    [SerializeField] private int damage = 5;
+    [SerializeField] private int hp = 3;
+    [SerializeField] private int damage = 2;
     [SerializeField] private string normalAttackDesc;
     [SerializeField] private string specialAttackDesc;
 

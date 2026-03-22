@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public event Action<GameObject> onPlayerDeath;
 
     [SerializeField] private int hp = 10;
-    [SerializeField] private int damage = 5;
+    [SerializeField] private int damage = 1;
 
     private List<Debuff> debuffs = new List<Debuff>();
     public List<Rune> inventory = new List<Rune>();

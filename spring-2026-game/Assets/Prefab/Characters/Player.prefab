@@ -104,6 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   hp: 10
-  damage: 5
+  damage: 1
   inventory: []
   healthText: {fileID: 0}

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ffb5d09cef05046bab2d9aaec08fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  hp: 10
+  hp: 3
   damage: 1
   normalAttackDesc: Ellepigen blows a sickening kiss
   specialAttackDesc: 

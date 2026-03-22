@@ -32,7 +32,7 @@ public class ButtonScript : MonoBehaviour
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     button.interactable = false;
-                    player.GetComponent<Player>().attack(new Debuff(1,0,10));
+                    player.GetComponent<Player>().attack(new Debuff(1,0,5));
                 });
                 //button.interactable = false;
                 break;
@@ -59,7 +59,7 @@ public class ButtonScript : MonoBehaviour
                 //Debug.Log($"Set {this.gameObject.name} to attack {type}");
                 button.onClick.AddListener( () => {
                     button.interactable = false;
-                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,4));
+                    player.GetComponent<Player>().attack(new Debuff((int)TurnManager.Debuffs.Heal,0,2));
                 });
                 //button.interactable = false;
                 break;

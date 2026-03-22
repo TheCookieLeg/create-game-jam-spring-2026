@@ -148,7 +148,7 @@ public class GUIManager : MonoBehaviour
             switch (debuff.type)
             {
                 case (int)TurnManager.Debuffs.Poison:
-                    attackDesc.text += $"dealt {debuff.damage} damage to the enemy";
+                    attackDesc.text += $"dealt great damage to the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Stun:
                     attackDesc.text += "stun the enemy";
@@ -157,7 +157,7 @@ public class GUIManager : MonoBehaviour
                     attackDesc.text += "weaken the enemy";
                     break;
                 case (int)TurnManager.Debuffs.Heal:
-                    attackDesc.text += "heal yourself";
+                    attackDesc.text += "feel invigorated";
                     break;
                 default:
                 
